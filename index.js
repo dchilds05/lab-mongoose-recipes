@@ -36,7 +36,8 @@ const promise3 = Recipe.insertMany(data)
   .catch((err) => console.log(err));
 
 
-const promise4 = Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese"}, {duration: 100})
+//THIS WOULD NEVER WORK IN REAL LIFE BECAUSE THE DELETE AND MODIFCATION FUNCTIONS CAN'T RUN BEFORE THE COMPLETION OF PROMISE 2
+  const promise4 = Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese"}, {duration: 100})
   .then( () => console.log("You have updated the information!"))
   .catch( error => console.log(error))
 
@@ -46,5 +47,5 @@ const promise5 = Recipe.deleteOne({title: "Carrot Cake"})
   .catch((error) => console.log(error))
 
 
-Promise.all([promise1, promise2, promise3, promise4, promise5])
+  Promise.all([promise1, promise2, promise3, promise4, promise5])
   .then(() => mongoose.connection.close (() => console.log("connection closed")))
